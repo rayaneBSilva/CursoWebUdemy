@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+</head>
+<body>
+    <header>
+        <h1>Exercicios HTML</h1>
+    </header>
+    <nav>
+        <a href="exercicios/teste.html">00 - teste</a>
+        <a href="exercicios/texto2.html">01 - teste1</a>
+        <a href="exercicios/lista.html">02 - teste2</a>
+        <a href="exercicios/temp.html">03 - teste3</a>
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        Curso Web 
+    </footer>
+    <script>
+        document.querySelectorAll('a[href]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function(e) {
+                e.preventDefault()
+                fetch(link.getAttribute('href'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
+</body>
+</html>
+
